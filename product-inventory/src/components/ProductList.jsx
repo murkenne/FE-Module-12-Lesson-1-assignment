@@ -1,14 +1,9 @@
 import React from 'react';
-import useInventory from '../hook/useInventory';
+import { useInventory } from '../context/InventoryContext';
 import { Table, Button, Container } from 'react-bootstrap';
 
 function ProductList() {
   const { products, removeProduct } = useInventory();
-
-  // Handle removing a product by ID
-  function handleRemoveProduct(id) {
-    removeProduct(id);
-  }
 
   return (
     <Container className="mt-4">
@@ -37,7 +32,7 @@ function ProductList() {
                   <Button
                     variant="danger"
                     size="sm"
-                    onClick={() => handleRemoveProduct(product.id)}
+                    onClick={() => removeProduct(product.id)}
                   >
                     Remove
                   </Button>
